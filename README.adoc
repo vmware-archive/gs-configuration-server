@@ -1,0 +1,9 @@
+---
+tags:
+---
+:toc:
+:project_id: gs-configuration-server
+:icons: font
+:source-highlighter: prettify
+
+This guide walks you through the process of creating a "hello world" Configuration Server and client service.
