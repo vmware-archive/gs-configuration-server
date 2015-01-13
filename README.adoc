@@ -1,6 +1,3 @@
----
-tags:
----
 :toc:
 :project_id: gs-configuration-server
 :icons: font
