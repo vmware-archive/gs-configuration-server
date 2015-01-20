@@ -53,7 +53,7 @@ image::images/5_manage_service.png[Manage Service]
 +
 image::images/6_service_successfully_configured.png[Service Successfully Configured]
 
-You have now completed the setup for a Spring Cloud Configuration service. This service can now be used to provide centralized configuration to a client application running on Cloud Foundry.
+You have completed the setup for a Spring Cloud Configuration service. This service can now be used to provide centralized configuration to a client application running on Cloud Foundry.
 
 
 == Utilize the configuration in a client app
