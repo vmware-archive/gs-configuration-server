@@ -28,7 +28,7 @@ image::images/1_marketplace.png[Marketplace]
 
 2. Click the "Select this plan" button
 
-image::images/2_select_plan[Select Plan]
+image::images/2_select_plan.png[Select Plan]
 
 3. Provide a name for the new Config Server service and click the "Add" button
 
