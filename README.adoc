@@ -1,6 +1,59 @@
+---
+tags: []
+---
 :toc:
 :project_id: gs-configuration-server
 :icons: font
 :source-highlighter: prettify
 
 This guide walks you through the process of creating a "hello world" Configuration Server and client service.
+
+== What you'll build
+
+You will enable support for Spring Cloud Config Server and build a client service that will read configuration properties from the server.
+
+
+== What you'll need
+
+- About 15 minutes
+- A favorite text editor
+- {jdk}[JDK 6] or later
+
+
+== Enable the Config Server service
+
+1. Select the "Spring Cloud Configuration Service" from the Marketplace
+
+image::images/1_marketplace.png[Marketplace]
+
+2. Click the "Select this plan" button
+
+image::images/2_select_plan[Select Plan]
+
+3. Provide a name for the new Config Server service and click the "Add" button
+
+image::images/3_instance_name.png[Instance Name]
+
+4. Note the new service is created and available
+
+image::images/4_service_successfully_added.png[Service Successfully Added]
+
+5. Select "Manage" option on the new service instance and enter the URI for the configuration Git repo
+
+image::images/5_manage_service.png[Manage Service]
+
+6. Note the green confirmation box indicating the service has been configured
+
+image::images/6_service_successfully_configured.png[Service Successfully Configured]
+
+You have now completed the setup for a Spring Cloud Configuration service. This service can now be used to provide centralized configuration to a client application running on Cloud Foundry.
+
+
+== Utilize the configuration in a client app
+
+TODO
+
+
+== Summary
+
+Congratulations! You've just enabled centralized configuration and utilized that configuration from within a client application.
