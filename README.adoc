@@ -1,7 +1,6 @@
 ---
 tags: []
 ---
-:jdk: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 :toc:
 :project_id: gs-configuration-server
 :icons: font
@@ -11,16 +10,26 @@ This guide walks you through the process of creating a "hello world" Configurati
 
 == What you'll build
 
-You will enable support for Spring Cloud Config Server and build a client service that will read configuration properties from the server.
+You will enable support for Spring Cloud Config Server and build a client app that will read configuration properties from the server.
 
 
 == What you'll need
 
-- About 15 minutes
-- A favorite text editor
-- {jdk}[JDK 6] or later
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
 
 
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc[]
+
+
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-gradle.adoc[]
+
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-maven.adoc[]
+
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-sts.adoc[]
+
+
+
+[[initial]]
 == Configure the Spring Cloud Configuration server
 
 The Pivotal Cloud Foundry Marketplace offers the Spring Cloud Configuration server as a service for providing externalized configuration for your various applications and services running on PCF.
