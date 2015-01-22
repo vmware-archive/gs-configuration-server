@@ -15,18 +15,7 @@ You will enable support for Spring Cloud Config Server and build a client app th
 
 == What you'll need
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
-
-
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc[]
-
-
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-gradle.adoc[]
-
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-maven.adoc[]
-
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-sts.adoc[]
-
+include::https://raw.githubusercontent.com/pcf-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
 
 
 [[initial]]
@@ -65,7 +54,78 @@ image::images/6_service_successfully_configured.png[Service Successfully Configu
 You have completed the setup for a Spring Cloud Configuration service. This service can now be used to provide centralized configuration to a client application running on Cloud Foundry.
 
 
-== Utilize the configuration in a client app
+== Create a client app
+
+In this section you will create a simple Spring Boot REST service which accepts external configuration from the Spring Cloud Configuration service.
+
+=== Run the Spring Boot REST service
+
+Before proceeding, take a moment to familiarize yourself with code in the `initial` folder. This code represents a working starting point prior to the addition of any specific Spring Cloud features. The `initial` folder located in this repository contains a simple Spring Boot REST service that returns "Hello World" when the root resource is requested. Execute the following commands to run the service.
+
+  cd initial
+  mvn spring-boot:run
+
+While the Spring Boot app is running, view the output of the REST request by executing the following command in a different terminal window. If all goes well, this command will respond with "Hello World".
+
+  curl http://localhost:8080
+
+Now that you have reviewed the initial state of the code, you will modify the app to use Spring Cloud features.
+
+=== Create a Maven POM
+
+Modify the initial code to enable support for external configuration through the use of the Spring Cloud Pivotal Connector. Modify the Maven POM to replace the Spring Boot parent with the Spring Cloud parent.
+
+`pom.xml`
+[source,xml]
+----
+include::complete/pom.xml[tag=cloudparent]
+----
+
+Add the Spring Cloud dependencies. The `spring-cloud-pivotal-connector` specifically enables support for automatically discovering a running Spring Cloud Configuration Server service.
+
+`pom.xml`
+[source,xml]
+----
+<dependencies>
+...
+include::complete/pom.xml[tag=clouddeps]
+...
+</dependencies>
+----
+
+The Spring Cloud dependencies are pre-releases and not available in Maven Central. Add the Spring Repository to pull in the required dependencies.
+
+`pom.xml`
+[source,xml]
+----
+include::complete/pom.xml[tag=springrepo]
+----
+
+These POM changes are all that is required to enable external configuration support in a Spring application. When deployed to Cloud Foundry, this app will import the external configuration and make it available within the Spring context.
+
+=== Create a controller class
+
+Modify the `HomeController` to utilize the external configuration. Add the `name` member variable and annotate it with `@Value("${name:World}")`. Then modify the `home()` method to return the value of the name variable.
+
+`src/main/java/demo/HomeController.java`
+[source,java]
+----
+include::complete/src/main/java/demo/HomeController.java[]
+----
+
+The `@Value` annotation is used to inject the value of the `name` property provided by the external configuration. If the property is not found, then it defaults to "World".
+
+=== Build an executable JAR
+
+include::https://raw.githubusercontent.com/pcf-guides/getting-started-macros/master/build_an_executable_jar_with_maven.adoc[]
+
+
+== Deploy the client to Cloud Foundry
+
+TODO
+
+
+== Test
 
 TODO
 
