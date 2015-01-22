@@ -20,9 +20,9 @@ include::https://raw.githubusercontent.com/pcf-guides/getting-started-macros/mas
 [[initial]]
 == Configure the Spring Cloud Configuration server
 
-The Pivotal Cloud Foundry Marketplace offers the Spring Cloud Configuration server as a service for providing externalized configuration for your various applications and services running on PCF.
+The Pivotal Cloud Foundry Marketplace offers the _Config Server for Pivotal CF_ as a service for providing externalized configuration for your various applications and services running on PCF.
 
-. Select the "Spring Cloud Configuration Service" from the Marketplace:
+. Select the *Config Server for Pivotal CF* from the Marketplace:
 +
 image::images/1_marketplace.png[Marketplace]
 
@@ -30,7 +30,7 @@ image::images/1_marketplace.png[Marketplace]
 +
 image::images/2_select_plan.png[Select Plan]
 
-. Provide a name for the new Config Server service and click the "Add" button:
+. Provide a name for the new Config Server service (e.g. config-server) and click the *Add* button:
 +
 image::images/3_instance_name.png[Instance Name]
 
@@ -38,7 +38,7 @@ image::images/3_instance_name.png[Instance Name]
 +
 image::images/4_service_successfully_added.png[Service Successfully Added]
 
-. Select the "Manage" link on the new service instance and enter the following URI for the configuration Git repo:
+. Select the *Manage* link on the new service instance and enter the following URI for the configuration Git repository:
 +
   https://github.com/pcf-guides/configuration-server-config-repo.git
 +
@@ -50,12 +50,12 @@ image::images/5_manage_service.png[Manage Service]
 +
 image::images/6_service_successfully_configured.png[Service Successfully Configured]
 
-You have completed the setup for a Spring Cloud Configuration service. This service can now be used to provide centralized configuration to a client application running on Cloud Foundry.
+You have completed the setup for a Config Server service. This service can now be used to provide centralized configuration to a client application running on Cloud Foundry.
 
 
 == Create a client app
 
-In this section you will create a simple Spring Boot REST service which accepts external configuration from the Spring Cloud Configuration service.
+In this section you will create a simple Spring Boot REST service which accepts external configuration from the Config Server service.
 
 === Run the Spring Boot REST service
 
@@ -118,14 +118,15 @@ The `@Value` annotation is used to inject the value of the `name` property provi
 
 include::https://raw.githubusercontent.com/pcf-guides/getting-started-macros/master/build_an_executable_jar_with_maven.adoc[]
 
+Now that you have built the app, you can deploy it to Cloud Foundry.
 
 == Deploy the client to Cloud Foundry
 
-Push the JAR file to Cloud Foundry and name the new app `restclient`.
+Using the Cloud Foundry CLI in a terminal window, push the JAR file to Cloud Foundry and name the new app `rest-client`.
 
   cf push rest-client -p target/gs-configuration-server-client-0.1.0.jar
 
-Bind the Configuration Server service to the newly published app.
+Bind the Config Server service to the newly published app.
 
   cf bind-service rest-client config-server
 
@@ -142,7 +143,7 @@ Make a request to the `rest-client` app:
 
 If everything works correctly, you will see:
 
-  Hello Spring Cloud Config Server!
+  Hello Config Server for Pivotal CF!
 
 
 == Summary
