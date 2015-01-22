@@ -2,10 +2,9 @@
 tags: []
 ---
 :toc:
-:project_id: gs-configuration-server
 :icons: font
 :source-highlighter: prettify
-
+:project_id: gs-configuration-server
 This guide walks you through the process of creating a "hello world" Configuration Server and client service.
 
 == What you'll build
@@ -122,12 +121,24 @@ include::https://raw.githubusercontent.com/pcf-guides/getting-started-macros/mas
 
 == Deploy the client to Cloud Foundry
 
-TODO
+Push the JAR file to Cloud Foundry and name the new app `restclient`.
+
+  cf push rest-client -p target/gs-configuration-server-client-0.1.0.jar
+
+Bind the Configuration Server service to the newly published app.
+
+  cf bind-service rest-client config-server
 
 
 == Test
 
-TODO
+Make a request to the `rest-client` app:
+
+  curl http://rest-client.{PCF DOMAIN}
+
+If everything works correctly, you will see
+
+  Hello Spring Cloud Config Server!
 
 
 == Summary
