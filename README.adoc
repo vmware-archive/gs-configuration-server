@@ -18,7 +18,7 @@ include::https://raw.githubusercontent.com/pcf-guides/getting-started-macros/mas
 
 
 [[initial]]
-== Configure the Spring Cloud Configuration server
+== Create a Config Server service
 
 The Pivotal Cloud Foundry Marketplace offers the _Config Server for Pivotal CF_ as a service for providing externalized configuration for your various applications and services running on PCF.
 
