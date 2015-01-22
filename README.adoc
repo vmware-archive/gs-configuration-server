@@ -129,6 +129,10 @@ Bind the Configuration Server service to the newly published app.
 
   cf bind-service rest-client config-server
 
+Restage the rest-client to ensure the changes take effect
+
+  cf restage rest-client
+
 
 == Test
 
@@ -136,7 +140,7 @@ Make a request to the `rest-client` app:
 
   curl http://rest-client.{PCF DOMAIN}
 
-If everything works correctly, you will see
+If everything works correctly, you will see:
 
   Hello Spring Cloud Config Server!
 
