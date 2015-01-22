@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
+  private static final String template = "Hello, %s!";
+
   @RequestMapping("/")
   public String home() {
-    return "Hello World";
+    return String.format(template, "World");
   }
 
 }
