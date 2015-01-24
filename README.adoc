@@ -42,13 +42,13 @@ image::images/4_service_successfully_added.png[Service Successfully Added]
 +
   https://github.com/pcf-guides/configuration-server-config-repo.git
 +
-A Git repo is the recommended configuration source.
-+
-image::images/5_manage_service.png[Manage Service]
-+
-This demonstration Git repository contains an `application.properties` file with the following contents:
+A Git repo is the recommended configuration source. This demonstration Git repository contains an `application.properties` file with the following contents:
 +
   name=Spring Cloud Config Server
++
+Enter the Git repository URI and click *Submit*:
++
+image::images/5_manage_service.png[Manage Service]
 
 . The green confirmation box indicates the service is configured:
 +
