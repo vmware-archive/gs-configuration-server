@@ -45,6 +45,10 @@ image::images/4_service_successfully_added.png[Service Successfully Added]
 A Git repo is the recommended configuration source.
 +
 image::images/5_manage_service.png[Manage Service]
++
+This demonstration Git repository contains an `application.properties` file with the following contents:
++
+  name=Spring Cloud Config Server
 
 . The green confirmation box indicates the service is configured:
 +
@@ -80,7 +84,7 @@ Modify the initial code to enable support for external configuration through the
 include::complete/pom.xml[tag=cloudparent]
 ----
 
-Add the Spring Cloud dependencies. The `spring-cloud-pivotal-connector` specifically enables support for automatically discovering a running Spring Cloud Configuration Server service.
+Add the Spring Cloud dependencies. The `spring-cloud-pivotal-connector` specifically enables support for automatically discovering a running Spring Cloud Configuration Server service. The `spring-cloud-cloudfoundry-connector` is a newer version than is available from the `spring-cloud-parent`. It needs to be explicity included to override the older version.
 
 `pom.xml`
 [source,xml]
@@ -124,22 +128,26 @@ Now that you have built the app, you can deploy it to Cloud Foundry.
 
 Using the Cloud Foundry CLI in a terminal window, push the JAR file to Cloud Foundry and name the new app `rest-client`.
 
-  cf push rest-client -p target/gs-configuration-server-client-0.1.0.jar
+  cf push rest-client --random-route -p target/gs-configuration-server-client-0.1.0.jar
 
-Bind the Config Server service to the newly published app.
+By default, the domain name for the application is determined by the application name. By using the `--random-route` parameter, you’re asking CloudFoundry to assign a random route. This will prevent domain name collisions with others who are working through this guide. Note the following line from the ouput. It contains the URI of the app with the randomly generated route.
+
+  Binding rest-client-brothellike-parallelogram.lion.wild.cf-app.com to rest-client...
+
+The next step is to bind the `config-server` service to the newly published `rest-client` app.
 
   cf bind-service rest-client config-server
 
-Restage the rest-client to ensure the changes take effect
+Finally, restage the `rest-client` to ensure the configuration changes take effect
 
   cf restage rest-client
 
 
 == Test
 
-Make a request to the `rest-client` app:
+Using the URI from the previous app deploy, make a request to the `rest-client` app:
 
-  curl http://rest-client.{PCF DOMAIN}
+  curl http://rest-client-brothellike-parallelogram.lion.wild.cf-app.com to rest-client
 
 If everything works correctly, you will see:
 
