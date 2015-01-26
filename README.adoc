@@ -34,7 +34,7 @@ image::images/2_select_plan.png[Select Plan]
 +
 image::images/3_instance_name.png[Instance Name]
 
-. The new service is created and available for use:
+. The new service is created and will be available for use after a few moments (a new Config Server is being deployed and launched just for this service instance, so this takes some time):
 +
 image::images/4_service_successfully_added.png[Service Successfully Added]
 
@@ -130,7 +130,7 @@ Using the Cloud Foundry CLI in a terminal window, push the JAR file to Cloud Fou
 
   cf push rest-client --random-route -p target/gs-configuration-server-client-0.1.0.jar
 
-By default, the domain name for the application is determined by the application name. By using the `--random-route` parameter, you’re asking CloudFoundry to assign a random route. This will prevent domain name collisions with others who are working through this guide. Note the following line from the ouput. It contains the URI of the app with the randomly generated route.
+By default, the domain name for the application is determined by the application name. By using the `--random-route` parameter, you’re asking Cloud Foundry to assign a random route. This will prevent domain name collisions with others who are working through this guide. Note the following line from the ouput. It contains the URI of the app with the randomly generated route.
 
   Binding rest-client-brothellike-parallelogram.lion.wild.cf-app.com to rest-client...
 
@@ -147,7 +147,7 @@ Finally, restage the `rest-client` to ensure the configuration changes take effe
 
 Using the URI from the previous app deploy, make a request to the `rest-client` app:
 
-  curl http://rest-client-brothellike-parallelogram.lion.wild.cf-app.com to rest-client
+  curl http://rest-client-brothellike-parallelogram.lion.wild.cf-app.com
 
 If everything works correctly, you will see:
 
