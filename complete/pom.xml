@@ -10,42 +10,22 @@
 
     <!-- tag::cloudparent[] -->
     <parent>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>1.0.2.RELEASE</version>
+        <groupId>io.pivotal.spring.cloud</groupId>
+        <artifactId>spring-cloud-services-starter-parent</artifactId>
+        <version>1.0.0.BUILD-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <!-- end::cloudparent[] -->
 
     <properties>
         <java.version>1.7</java.version>
-        <!-- Override the managed version of the Pivotal Cloud Connectors dependencies -->
-        <spring-cloud-connectors.version>1.2.0.RC1</spring-cloud-connectors.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <!-- tag::clouddeps[] -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-client</artifactId>
-        </dependency>
-        <dependency>
             <groupId>io.pivotal.spring.cloud</groupId>
-            <artifactId>spring-cloud-pivotal-cloudfoundry-connector</artifactId>
-            <version>1.0.0.M1</version>
-        </dependency>
-        <dependency>
-            <groupId>io.pivotal.spring.cloud</groupId>
-            <artifactId>spring-cloud-pivotal-spring-connector</artifactId>
-            <version>1.0.0.M1</version>
+            <artifactId>spring-cloud-services-starter-config-client</artifactId>
         </dependency>
         <!-- end::clouddeps[] -->
         <dependency>
@@ -67,15 +47,21 @@
     <!-- tag::springrepo[] -->
     <repositories>
         <repository>
-            <id>spring-milestones</id>
-            <url>https://repo.spring.io/libs-milestone</url>
+            <id>spring-snapshots</id>
+            <url>https://repo.spring.io/libs-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
     <pluginRepositories>
         <pluginRepository>
-            <id>spring-milestones</id>
-            <url>https://repo.spring.io/libs-milestone</url>
+            <id>spring-snapshots</id>
+            <url>https://repo.spring.io/libs-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </pluginRepository>
     </pluginRepositories>
     <!-- end::springrepo[] -->

@@ -76,7 +76,7 @@ Now that you have reviewed the initial state of the code, you will modify the ap
 
 === Create a Maven POM
 
-Modify the initial code to enable support for external configuration through the use of the Spring Cloud Pivotal Connector. Modify the Maven POM to replace the Spring Boot parent with the Spring Cloud parent.
+Modify the initial code to enable support for external configuration through the use of the Spring Cloud Services starter. Modify the Maven POM to replace the Spring Boot parent with the Spring Cloud Services parent.
 
 `pom.xml`
 [source,xml]
@@ -84,7 +84,7 @@ Modify the initial code to enable support for external configuration through the
 include::complete/pom.xml[tag=cloudparent]
 ----
 
-Add the Spring Cloud dependencies. The `spring-cloud-pivotal-connector` specifically enables support for automatically discovering a running Spring Cloud Configuration Server service. The `spring-cloud-cloudfoundry-connector` is a newer version than is available from the `spring-cloud-parent`. It needs to be explicity included to override the older version.
+Add the Spring Cloud Services dependencies. The `spring-cloud-services-starter-config-client` specifically enables support for automatically discovering a running Spring Cloud Configuration Server service on Pivotal Cloud Foundry.
 
 `pom.xml`
 [source,xml]
